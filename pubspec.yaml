@@ -1,0 +1,54 @@
+name: kickstart
+description: A template for a new Flutter project using common architecture and packages.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^0.1.3
+
+  get_it: ^4.0.4
+  stacked: ^1.7.6
+  rxdart: ^0.24.1
+  easy_localization: ^2.3.3
+  catcher: ^0.3.17
+
+  tailwind_colors: ^0.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_launcher_icons: ^0.7.5
+  flutter_launcher_name: ^0.0.1
+
+# Run 'flutter pub run flutter_launcher_icons:main' to apply icons
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/icon.png"
+  adaptive_icon_background: "#ff4a5568"
+  adaptive_icon_foreground: "assets/icon/adaptive_foreground.png"
+
+# Run 'flutter pub run flutter_launcher_name:main' to apply name
+flutter_launcher_name:
+  name: "Kickstart"
+
+# The following section is specific to Flutter.
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/icon/
+    - assets/images/
+    - assets/lang/
+    - assets/sound/
