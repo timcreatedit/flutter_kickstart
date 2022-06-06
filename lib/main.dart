@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kickstart/ui/routing/observers/debug_route_observer.dart';
 import 'package:flutter_kickstart/ui/routing/router.dart';
+import 'package:flutter_kickstart/ui/theme/theme.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -23,9 +24,8 @@ class MyApp extends HookConsumerWidget {
       routeInformationParser: router.defaultRouteParser(),
       localizationsDelegates: L10n.localizationsDelegates,
       supportedLocales: L10n.supportedLocales,
-      theme: ThemeData(
-
-      ),
+      theme: getAppTheme(Brightness.light),
+      darkTheme: getAppTheme(Brightness.dark),
     );
   }
 }
