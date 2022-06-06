@@ -1,41 +1,31 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:kickstart/catcher.dart';
-import 'package:kickstart/locator.dart';
-import 'package:kickstart/services/dialog_service.dart';
-import 'package:kickstart/services/navigation_service.dart';
-import 'package:kickstart/view/shared/router.dart';
-import 'package:kickstart/view/shared/theme/theme.dart';
+import 'package:flutter_kickstart/ui/routing/observers/debug_route_observer.dart';
+import 'package:flutter_kickstart/ui/routing/router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'managers/dialog_manager.dart';
-
-Future main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  // Register all the models and services before the app starts
-  setupLocator();
-  runAppWithCatcherAndLocalization(App());
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+void main() {
+  runApp(const ProviderScope(child: MyApp()));
 }
 
-class App extends StatelessWidget {
+class MyApp extends HookConsumerWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'app-name'.tr(),
-      builder: (context, child) => Navigator(
-        key: locator<DialogService>().dialogNavigationKey,
-        onGenerateRoute: (settings) => MaterialPageRoute(
-          builder: (context) => DialogManager(child: child),
-        ),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.watch(routerProvider);
+    return MaterialApp.router(
+      title: L10n.of(context)!.appName,
+      routerDelegate: router.delegate(
+        initialDeepLink: "/",
+        navigatorObservers: () => [DebugRouteObserver()],
       ),
-      navigatorKey: locator<NavigationService>().navigationKey,
-      theme: lightTheme,
-      darkTheme: darkTheme,
-      themeMode: ThemeMode.system,
-      onGenerateRoute: generateRoute,
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
+      routeInformationParser: router.defaultRouteParser(),
+      localizationsDelegates: L10n.localizationsDelegates,
+      supportedLocales: L10n.supportedLocales,
+      theme: ThemeData(
+
+      ),
     );
   }
 }
