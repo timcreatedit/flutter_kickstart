@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:material_color_utilities/blend/blend.dart';
 import 'package:material_color_utilities/hct/hct.dart';
 
 extension ColorX on Color {
@@ -18,11 +19,16 @@ extension ColorX on Color {
       '${green.toRadixString(16).padLeft(2, '0')}'
       '${blue.toRadixString(16).padLeft(2, '0')}';
 
-  /// Blends smoothly between two colors using HCT
+  Hct toHct() => Hct.fromInt(value);
+
+  Color harmonizeWith(Color other) {
+    return Color(Blend.harmonize(value, other.value));
+  }
+
   static Color lerpBlend(Color from, Color to, double value) {
-    final hctFrom = HctColor.fromInt(from.value);
-    final hctTo = HctColor.fromInt(to.value);
-    final result = HctColor.from(
+    final hctFrom = Hct.fromInt(from.value);
+    final hctTo = Hct.fromInt(to.value);
+    final result = Hct.from(
       lerpDouble(hctFrom.hue, hctTo.hue, value)!,
       lerpDouble(hctFrom.chroma, hctTo.chroma, value)!,
       lerpDouble(hctFrom.tone, hctTo.tone, value)!,
