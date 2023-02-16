@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kickstart/lang/localization/localizations.dart';
-import 'package:flutter_kickstart/ui/routing/router.dart';
+import 'package:flutter_kickstart/view/routing/router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        useMaterial3: true,
       ),
       routerConfig: router,
       localizationsDelegates: L10n.localizationsDelegates,
