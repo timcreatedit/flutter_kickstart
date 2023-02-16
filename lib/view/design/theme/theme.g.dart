@@ -29,7 +29,7 @@ class _SystemHash {
   }
 }
 
-String _$themeHash() => r'4370ed5cb7f206088d6b19dbf96a69bdff3ee1f9';
+String _$themeHash() => r'6ca21a8b4349cadfe27bff60b2e0729a3ed053c7';
 
 /// See also [theme].
 class ThemeProvider extends AutoDisposeProvider<ThemeData> {

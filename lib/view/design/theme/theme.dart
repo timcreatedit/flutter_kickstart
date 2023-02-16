@@ -10,5 +10,6 @@ ThemeData theme(
 }) {
   return ThemeData(
     useMaterial3: true,
+    brightness: brightness,
   );
 }
