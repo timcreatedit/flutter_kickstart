@@ -1,4 +1,4 @@
-import 'package:flutter_kickstart/ui/home/home.page.dart';
+import 'package:flutter_kickstart/view/home/home.page.dart';
 import 'package:go_router/go_router.dart';
 
 final router = GoRouter(
