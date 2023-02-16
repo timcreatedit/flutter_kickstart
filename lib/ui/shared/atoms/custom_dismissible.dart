@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 /// Similar to [Dismissible] with some adjustments.
 class CustomDismissible extends StatefulWidget {
   const CustomDismissible({
+    super.key,
     required this.child,
     this.onDismissed,
     this.dismissThreshold = 0.4,

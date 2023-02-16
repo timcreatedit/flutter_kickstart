@@ -44,7 +44,7 @@ class RenderSliverFadeIn extends RenderProxySliver {
   @override
   bool get alwaysNeedsCompositing => child != null && (_minAlpha > 0);
 
-  int _minAlpha;
+  final int _minAlpha;
 
   /// The fraction to scale the child's alpha value.
   ///

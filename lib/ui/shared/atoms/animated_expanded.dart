@@ -72,8 +72,8 @@ class AnimatedExpanded extends StatelessWidget {
       ),
       child: child ??
           (axis == Axis.vertical
-              ? SizedBox(width: double.infinity)
-              : SizedBox(height: double.infinity)),
+              ? const SizedBox(width: double.infinity)
+              : const SizedBox(height: double.infinity)),
     );
   }
 

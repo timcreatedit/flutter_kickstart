@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+// ignore: depend_on_referenced_packages
 import 'package:state_notifier/state_notifier.dart';
 
 /// Subscribes to a [StateNotifier] and mark the widget as needing build
