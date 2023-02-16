@@ -1,0 +1,133 @@
+{
+    "Hook Consumer with all imports": {
+        "scope": "dart",
+        "prefix": "hookConsumer",
+        "description": "Create a HookConsumerWidget",
+        "body": [
+            "import 'package:flutter/material.dart';",
+            "import 'package:hooks_riverpod/hooks_riverpod.dart';",
+            "",
+            "class $1 extends HookConsumerWidget {",
+            "\tconst $1({super.key});",
+            "$2",
+            "\t@override",
+            "\tWidget build(BuildContext context, WidgetRef ref) {",
+            "\t\treturn Container();",
+            "\t}",
+            "}",
+        ]
+    },
+    "Use l10n": {
+        "scope": "dart",
+        "prefix": "ul10n",
+        "description": "Obtain reference to l10n from hook",
+        "body": [
+            "final l10n = useL10n();",
+        ]
+    },
+    "Use Theme": {
+        "scope": "dart",
+        "prefix": "utheme",
+        "description": "Obtain reference to Theme from hook",
+        "body": [
+            "final theme = useTheme();",
+        ]
+    },
+    "Freezed Class": {
+        "scope": "dart",
+        "prefix": "frzd",
+        "description": "Create a freezed class from the file name",
+        "body": [
+            "import 'package:freezed_annotation/freezed_annotation.dart';",
+            "",
+            "part '$TM_FILENAME_BASE.freezed.dart';",
+            "",
+            "@freezed",
+            "class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} with _$${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} {",
+            "\tconst ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}._();",
+            "",
+            "\tconst factory ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}({",
+            "\t\trequired $parameter,",
+            "\t}) = _${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/};",
+            "}",
+        ]
+    },
+    "Freezed JSON class": {
+        "scope": "dart",
+        "prefix": "frzdJson",
+        "description": "Create a freezed class from the file name with JSON methods",
+        "body": [
+            "import 'package:freezed_annotation/freezed_annotation.dart';",
+            "",
+            "part '$TM_FILENAME_BASE.freezed.dart';",
+            "part '$TM_FILENAME_BASE.g.dart';",
+            "",
+            "@freezed",
+            "class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} with _$${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} {",
+            "\tconst ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}._();",
+            "",
+            "\tconst factory ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}({",
+            "\t\trequired $parameter,",
+            "\t}) = _${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/};",
+            "",
+            "factory ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}.fromJson(Map<String, dynamic> json) => _$${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}FromJson(json);",
+            "}",
+        ]
+    },
+    "Treatment Measure": {
+        "scope": "dart",
+        "prefix": "trtmntmsr",
+        "description": "A treatment measure",
+        "body": [
+            "TreatmentMeasure(",
+            "\tuid: \"default_$1\",",
+            "\tname: \"$2\",",
+            "\tcategory: TreatmentMeasureCategory.$3(),",
+            "\tfyzoProvided: true,",
+            "\tbodyParts: BodyParts($4",
+            "\t),",
+            "\tdescription: \"$5\",",
+            "),"
+        ]
+    },
+    "Basic test scaffolding": {
+        "scope": "dart",
+        "prefix": "t_scaffold",
+        "body": [
+            "import 'package:flutter_test/flutter_test.dart';",
+            "",
+            "void main() {",
+            "  late ${1:ClassName} sut;",
+            "",
+            "  setUp(() {",
+            "    sut = ${1:ClassName}();",
+            "  });",
+            "",
+            "  group('', () {});",
+            "}",
+            ""
+        ],
+        "description": "Basic test scaffolding"
+    },
+    "Test following the Arrange-Act-Assert pattern": {
+        "scope": "dart",
+        "prefix": "aaaTest",
+        "body": [
+            "test(\"$1\", () async {",
+            "  $2",
+            "});"
+        ],
+        "description": "Test following the Arrange-Act-Assert pattern"
+    },
+    "Flutter widget test boilerplate": {
+        "scope": "dart",
+        "prefix": "wTest",
+        "body": [
+            "testWidgets(",
+            "  \"$1\",",
+            "  (WidgetTester tester) async {$2},",
+            ");"
+        ],
+        "description": "Flutter widget test boilerplate"
+    },
+}
