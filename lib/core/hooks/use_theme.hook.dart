@@ -5,13 +5,3 @@ ThemeData useTheme() {
   final context = useContext();
   return Theme.of(context);
 }
-
-TextTheme useTextTheme() {
-  final theme = useTheme();
-  return theme.textTheme;
-}
-
-ColorScheme useColorScheme() {
-  final theme = useTheme();
-  return theme.colorScheme;
-}

@@ -4,35 +4,56 @@ extension DateTimeX on DateTime {
   }
 
   DateTime endOfDay() {
-    return DateTime(year, month, day, 23, 59, 59, 999);
+    return DateTime(year, month, day, 23, 59, 59, 999, 999);
   }
 
-  Iterable<DateTime> getDaysUntil(DateTime other, {bool inclusive = false}) sync* {
+  // Adds days while keeping the same time, even if daylight saving time
+  // is crossed
+  DateTime addDaysSameTime(int days) {
+    return DateTime(
+      year,
+      month,
+      day + days,
+      hour,
+      minute,
+      second,
+      millisecond,
+      microsecond,
+    );
+  }
+
+  Iterable<DateTime> getDaysUntil(DateTime other,
+      {bool inclusive = false}) sync* {
     var date = startOfDay();
     final endDate = other.startOfDay();
     while (date.isBefore(endDate) || (inclusive && date.isSameDayAs(endDate))) {
       yield date;
-      date = date.add(const Duration(days: 1));
+      date = date.addDaysSameTime(1);
     }
   }
 
   DateTime withTimeFrom(DateTime time) {
-    return DateTime(year, month, day, time.hour, time.minute, time.second, time.millisecond, time.microsecond);
+    return DateTime(year, month, day, time.hour, time.minute, time.second,
+        time.millisecond, time.microsecond);
   }
 
+  /// Returns [this] if's on the same day or on a later day than [other],
+  /// otherwise [other] is returned.
   DateTime earlierDay(DateTime other) {
     if (other.startOfDay().isBefore(startOfDay())) return other;
     return this;
   }
 
+  /// Returns [this] if's on the same day or on an earlier day than [other],
+  /// otherwise [other] is returned.
   DateTime laterDay(DateTime other) {
     if (other.startOfDay().isAfter(startOfDay())) return other;
     return this;
   }
 
   int daysUntil(DateTime other, {bool inclusive = false}) {
-    return other.startOfDay().difference(startOfDay()).inDays +
-        (inclusive ? 1 : 0);
+    final diff = other.startOfDay().difference(startOfDay()).inDays;
+    return (inclusive ? 1 : 0) * diff.sign + diff;
   }
 
   bool isSameDayAs(DateTime other) {
@@ -47,8 +68,10 @@ extension DateTimeX on DateTime {
   bool isBetween({
     required DateTime start,
     required DateTime end,
+    bool inclusive = false,
   }) {
-    return isBefore(end) && isAfter(start);
+    return isBefore(end) && isAfter(start) ||
+        (inclusive && (isAtSameMomentAs(start) || isAtSameMomentAs(end)));
   }
 
   DateTime min(DateTime other) {

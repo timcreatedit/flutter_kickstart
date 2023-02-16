@@ -1,31 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_kickstart/ui/routing/observers/debug_route_observer.dart';
+import 'package:flutter_kickstart/lang/localization/localizations.dart';
 import 'package:flutter_kickstart/ui/routing/router.dart';
-import 'package:flutter_kickstart/ui/theme/theme.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(const MyApp());
 }
 
-class MyApp extends HookConsumerWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final router = ref.watch(routerProvider);
+  Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: L10n.of(context)!.appName,
-      routerDelegate: router.delegate(
-        initialDeepLink: "/",
-        navigatorObservers: () => [DebugRouteObserver()],
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
-      routeInformationParser: router.defaultRouteParser(),
+      routerConfig: router,
       localizationsDelegates: L10n.localizationsDelegates,
       supportedLocales: L10n.supportedLocales,
-      theme: getAppTheme(Brightness.light),
-      darkTheme: getAppTheme(Brightness.dark),
     );
   }
 }
