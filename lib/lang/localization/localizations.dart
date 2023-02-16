@@ -91,6 +91,11 @@ abstract class L10n {
     Locale('en')
   ];
 
+  /// No description provided for @appName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get appName;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_kickstart/lang/localization/localizations.dart';
 import 'package:flutter_kickstart/ui/routing/router.dart';
-
-import 'src/localization/localizations.dart';
 
 void main() {
   runApp(const MyApp());
