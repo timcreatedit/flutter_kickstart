@@ -33,6 +33,29 @@
             "final theme = useTheme();",
         ]
     },
+    "Generated Part directive": {
+        "scope": "dart",
+        "prefix": "partg",
+        "description": "Creates a part directive for this file with the .g suffix",
+        "body": [
+            "part '$TM_FILENAME_BASE.g.dart';",
+        ]
+    },
+    "Riverpod Notifier": {
+        "scope": "dart",
+        "prefix": "rnotif",
+        "description": "Create a riverpod notifier",
+        "body": [
+            "@riverpod",
+            "class $1 extends _$$1 {",
+            "",
+            "\t@override",
+            "\t$2 build() {",
+            "\t$3",
+            "\t}",
+            "}",
+        ]
+    },
     "Freezed Class": {
         "scope": "dart",
         "prefix": "frzd",

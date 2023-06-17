@@ -21,6 +21,7 @@ dependencies:
   intl: ^0.18.0
   material_color_utilities: ^0.2.0
   riverpod_annotation: ^2.1.1
+  freezed_annotation:
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -28,10 +29,13 @@ dev_dependencies:
     sdk: flutter
   # flutter pub run build_runner watch --delete-conflicting-outputs
   # (you're welcome)
+  freezed:
   build_runner:
   riverpod_generator:
   custom_lint:
   riverpod_lint:
+  # flutter pub run change_app_package_name:main 
+  change_app_package_name:
 
 flutter:
   uses-material-design: true
